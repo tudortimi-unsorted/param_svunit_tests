@@ -38,3 +38,25 @@ module dut_unit_test_core #(
   `SVUNIT_TESTS_END
 
 endmodule
+
+
+
+module dut_unit_test;
+
+  dut_unit_test_core #(.name("dut_1_BE"), .A(1), .V('hBE)) ut_core_1_BE();
+  dut_unit_test_core #(.name("dut_2_CAFE"), .A(2), .V('hCAFE)) ut_core_2_CAFE();
+
+
+  svunit_pkg::svunit_testsuite svunit_ut;
+
+  function void build();
+    svunit_ut = new("dut_unit_tests");
+    svunit_ut.add_testcase(ut_core_1_BE.svunit_ut);
+    svunit_ut.add_testcase(ut_core_2_CAFE.svunit_ut);
+  endfunction
+
+  task run();
+    svunit_ut.run();
+  endtask
+
+endmodule
