@@ -1,0 +1,17 @@
+*.log
+
+# Emacs
+*~
+
+# DVT
+.dvt/*.build.auto.*
+
+# Xcelium
+xcelium.d
+run.history
+
+# SVUnit
+.svunit.f
+.testrunner.sv
+.__tests_testsuite.sv
+tests.xml
